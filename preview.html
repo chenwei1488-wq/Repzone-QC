@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>球衣 QC 高清大图预览</title>
+    <style>
+        body { background: #121212; color: #eee; font-family: -apple-system, sans-serif; padding: 30px; }
+        .gallery { display: flex; flex-direction: column; align-items: center; gap: 40px; }
+        .item { background: #222; padding: 15px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 90%; }
+        img { width: 100%; height: auto; display: block; border-radius: 10px; }
+        .label { margin-top: 10px; text-align: center; font-size: 14px; color: #888; }
+        h1 { text-align: center; margin-bottom: 40px; color: #00ff88; }
+    </style>
+</head>
+<body>
+    <h1>高清质检图列表 (去参数版)</h1>
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        // 在这里粘贴你复制的任何链接（带不带参数都行）
+        const urls = [
+            "https://kako-alosshk-pic.kakobuy.com/whg/202603/29/e71cf404df46ab5dc51935782da49280.jpg?x-oss-process=style/wh200",
+            "https://kako-alosshk-pic.kakobuy.com/whg/202603/28/6e3337e6bf59f410b832328c1ee34bf3.jpg?x-oss-process=style/wh200",
+            "https://kako-alosshk-pic.kakobuy.com/whg/202603/28/08282f7aa84c9dc70e7bf2b27e914b81.jpg?x-oss-process=style/wh200"
+        ];
+
+        const container = document.getElementById('gallery');
+        urls.forEach((url, index) => {
+            // 核心逻辑：删除问号后面的压缩参数，获取原图
+            const hdUrl = url.split('?')[0]; 
+            
+            const div = document.createElement('div');
+            div.className = 'item';
+            div.innerHTML = `
+                <img src="${hdUrl}" alt="球衣 ${index + 1}">
+                <div class="label">图片编号：${index + 1} | 已自动转换为高清原图</div>
+            `;
+            container.appendChild(div);
+        });
+    </script>
+</body>
+</html>
